@@ -10,6 +10,51 @@
 
 <body>
 
+	<p>数据更新至2020.xx.xx xx:xx</p>
+	
+	<div style="width:900px;height:200px">
+		<div style="width:300px;height:100px;float:left">
+			<p>现有确诊</p>
+			<p>1234</p>
+			<p>昨日+00</p>
+		</div>
+		<div style="width:300px;height:100px;float: left">
+			<p>现有疑似</p>
+			<p>1234</p>
+			<p>昨日+00</p>
+		</div>
+		<div style="width:300px;height:100px;float: left">
+			<p>现有重症</p>
+			<p>1234</p>
+			<p>昨日+00</p>
+		</div>
+		<div style="width:300px;height:100px;float: left">
+			<p>累计确诊</p>
+			<p>1234</p>
+			<p>昨日+00</p>
+		</div>
+		<div style="width:300px;height:100px;float: left">
+			<p>累计治愈</p>
+			<p>1234</p>
+			<p>昨日+00</p>
+		</div>
+		<div style="width:300px;height:100px;float: left">
+			<p>累计死亡</p>
+			<p>1234</p>
+			<p>昨日+00</p>
+		</div>
+	</div>
+	
+	<div style="width:1000px;height:75px">
+		<div style="width:500px;height:75px;float: left">
+			<input type="button" value="现有确诊" οnclick="">
+		</div>
+		<div style="width:500px;height:75px;float: left">
+			<input type="button" value="累计确诊" οnclick="">
+		</div>
+
+	</div>
+	
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width:1000px;height:800px;"></div>
     <script type="text/javascript">
@@ -86,8 +131,7 @@
         myChart.setOption(optionMap);
 		
 		myChart.on('click', function (params) {
-			alert(params.name);
-			window.location.href="./province.html";
+			window.location.href="./province.html?province="+params.name;
 
         });
     </script>
