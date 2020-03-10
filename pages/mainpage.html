@@ -85,6 +85,11 @@
         //使用制定的配置项和数据显示图表
         myChart.setOption(optionMap);
 		
+		myChart.on('click', function (params) {
+			alert(params.name);
+			window.location.href="./province.html";
+
+        });
     </script>
 </body>
 </html>
