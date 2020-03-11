@@ -2,14 +2,20 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>无标题文档</title>
+<title>省份疫情视图</title>
 </head>
 
 <body>
-	<h1>xx</h1>
+	
+	<h1>
+	<script type="text/javascript">
+        var province=window.location.href//.split(“=”)[0];
+		province=province.split("=")[1];
+        document.write(province);  //直接写变量名，输出变量存储的内容。
+    </script>
+	</h1>
 	<p>更新至 2020.xx.xx xx:xx</p>
-    <input type="button" value="返回" οnclick="">
-    <div style="width:1000px;height:100px;">
+    <div style="margin-left: 50px; width:1000px;height:100px;text-align: center">
 	    <div style="width:250px;height:100px;float:left">
 			<p>现有确诊</p>
 			<p>1234</p>
