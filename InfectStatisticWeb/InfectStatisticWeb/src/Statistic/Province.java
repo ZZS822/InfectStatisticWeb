@@ -1,35 +1,34 @@
-package Statistic;
+package statistic;
 
 public class Province {
 	private String name;//省份的名�?
 	private int ip;//感染患�??
-	private int allip;//累计确诊
-	private int heavyip;//重症患者
+	private int cumulativeIp;//累计确诊
+	private int severeIp;//重症患者
 	private int sp;//疑似患�??
 	private int cure;//治愈
 	private int dead;//死亡
-	private int isinlog;//当天是否被改�?
+	private int isChange;//当天是否被改�?
 	
 	public Province(String name)//构�?�函�?
 	{
 		this.name=name;
 		ip=0;
-		allip=0;
-		heavyip=0;
+		cumulativeIp=0;
+		severeIp=0;
 		sp=0;
 		cure=0;
 		dead=0;
-		isinlog=0;
+		isChange=0;
 	}
 
-	public int getIsinlog()
+	public int getIsChange()
 	{
-		return isinlog;
+		return isChange;
 	}
-	
-	public void setIsinlog()
+	public void setIsChange()
 	{
-		isinlog=1;
+		isChange=1;
 	}
 	
 	public String getName()
@@ -57,14 +56,14 @@ public class Province {
 		return dead;
 	}
 	
-	public int getAllIp()
+	public int getCumulativeIp()
 	{
-		return allip=ip+cure+dead;
+		return cumulativeIp=ip+cure+dead;
 	}
 	
-	public int getHeavyIp()
+	public int getSevereIp()
 	{
-		return heavyip;
+		return severeIp;
 	}
 	
 	public void addIp(int x)//增加感染�?

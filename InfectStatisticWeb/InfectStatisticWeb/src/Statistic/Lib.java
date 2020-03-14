@@ -1,4 +1,5 @@
-package Statistic;
+package statistic;
+
 import java.util.*;
 
 public class Lib {
