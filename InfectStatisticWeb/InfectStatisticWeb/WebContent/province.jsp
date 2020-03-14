@@ -49,23 +49,23 @@
      <div id="q3">
 	    <div class="a1">
 			<p class="b1">现有确诊</p>
-			<p><%=p.getIp() %></p>
-			<p>昨日<%=lastnewip %></p>
+			<p class="c1"><%=p.getIp() %></p>
+			<p>昨日<b class="c1"><%=lastnewip %></b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计确诊</p>
-			<p><%=p.getAllIp() %></p>
-			<p>昨日<%=lastnewallip %></p>
+			<p class="c2"><%=p.getAllIp() %></p>
+			<p>昨日<b class="c2"><%=lastnewallip %></b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计治愈</p>
-			<p><%=p.getCure() %></p>
-			<p>昨日<%=lastnewcure %></p>
+			<p class="c3"><%=p.getCure() %></p>
+			<p>昨日<b class="c3"><%=lastnewcure %></b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计死亡</p>
-			<p><%=p.getDead() %></p>
-			<p>昨日<%=lastnewdead %></p>
+			<p class="c4"><%=p.getDead() %></p>
+			<p>昨日<b class="c4"><%=lastnewdead %></b></p>
 		</div>
     </div>
 	
@@ -75,13 +75,13 @@
 	
 	<div id="q4">
 		<div class="a2">
-		    <button id="now" type="button">新增确诊趋势</button>
+		    <button id="now" class="button1" type="button">新增确诊趋势</button>
 		</div>
 		<div class="a2">
-		    <button id="all" type="button">累计确诊趋势</button>
+		    <button id="all" class="button1" type="button">累计确诊趋势</button>
 		</div>
 		<div class="a2">
-			<button id="DeadAndCure" type="button">累计治愈/死亡趋势</button>
+			<button id="DeadAndCure" class="button1" type="button">累计治愈/死亡趋势</button>
 		</div>
 	</div>
 	

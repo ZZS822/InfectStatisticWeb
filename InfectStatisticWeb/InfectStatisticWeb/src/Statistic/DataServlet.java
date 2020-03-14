@@ -32,8 +32,11 @@ public class DataServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String path = this.getServletContext().getRealPath("/log");
+		
 		InfectStatistic is=new InfectStatistic();
-	    is.getFileList("E:\\MyJavaCode\\InfectStatisticWeb\\WebContent\\log");
+	    is.getFileList(path);
 	    Lib[] Datas=is.getLib();
 	    
 	    String provincename=request.getParameter("province");

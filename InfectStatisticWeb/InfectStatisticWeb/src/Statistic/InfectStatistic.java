@@ -312,4 +312,10 @@ public class InfectStatistic{
 		
 	}
 	
+	public String outPath()
+	{
+		String path=System.getProperty("user.dir");
+		return path;
+	}
+	
 }

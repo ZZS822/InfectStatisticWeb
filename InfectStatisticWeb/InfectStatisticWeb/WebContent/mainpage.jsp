@@ -17,9 +17,17 @@
 <body>
 
 <%
+     
+     //String web_inf = getServletContext().getRealPath("/WEB-INF/");
+     //String path="E:\\MyJavaCode\\InfectStatisticWeb\\WebContent\\log"; 
+     String path = this.getServletContext().getRealPath("/log");
 
      InfectStatistic is=new InfectStatistic();
-     is.getFileList("E:\\MyJavaCode\\InfectStatisticWeb\\WebContent\\log");
+
+     
+
+     is.getFileList(path);
+     
      Lib[] Datas=is.getLib();
      Lib Data=Datas[Datas.length-1];
      Vector<Province> pro=Data.provinces;
@@ -68,33 +76,33 @@
 	<div id="q2">
 		<div class="a1">
 			<p class="b1">现有确诊</p>
-			<p><%=Data.provinces.get(0).getIp() %></p>
-			<p>昨日<%=newip %></p>
+			<p class="c1"><%=Data.provinces.get(0).getIp() %></p>
+			<p>昨日<b class="c1"><%=newip %></b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">现有疑似</p>
-			<p><%=Data.provinces.get(0).getSp() %></p>
-			<p>昨日<%=newsp %></p>
+			<p class="c2"><%=Data.provinces.get(0).getSp() %></p>
+			<p>昨日<b class="c2"><%=newsp %></b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">现有重症</p>
-			<p>暂无</p>
-			<p>昨日暂无</p>
+			<p class="c3">暂无</p>
+			<p>昨日<b class="c3">暂无</b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计确诊</p>
-			<p><%=Data.provinces.get(0).getAllIp() %></p>
-			<p>昨日<%=newallip %></p>
+			<p class="c4"><%=Data.provinces.get(0).getAllIp() %></p>
+			<p>昨日<b class="c4"><%=newallip %></b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计治愈</p>
-			<p><%=Data.provinces.get(0).getCure() %></p>
-			<p>昨日<%=newcure %></p>
+			<p class="c5"><%=Data.provinces.get(0).getCure() %></p>
+			<p>昨日<b class="c5"><%=newcure %></b></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计死亡</p>
-			<p><%=Data.provinces.get(0).getDead() %></p>
-			<p>昨日<%=newdead %></p>
+			<p class="c6"><%=Data.provinces.get(0).getDead() %></p>
+			<p>昨日<b class="c6"><%=newdead %></b></p>
 		</div>
 	</div>
 	
@@ -285,7 +293,7 @@
                 
                 //配置属性
                 series: [{  
-                    name: '数据',  
+                    name: '确诊',  
                     type: 'map',  
                     mapType: 'china',   
                     roam: false,  
