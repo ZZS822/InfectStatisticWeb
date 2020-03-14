@@ -154,8 +154,8 @@
 	            {
 	            	option = {
 	                        title:{
-	                            text:'折线图实例',//标题
-	                            left: 'center',//标题位置
+	                            text:'新增确诊趋势',//标题
+	                            left: 'left',//标题位置
 	                        },
 	                        //提示框组件
 	                        tooltip:{
