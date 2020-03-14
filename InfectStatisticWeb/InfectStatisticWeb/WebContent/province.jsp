@@ -20,6 +20,26 @@
 <%
    Province p=(Province)request.getAttribute("province");
    String date=(String)request.getAttribute("date");
+   
+   int temp=(int)request.getAttribute("lastnewip");
+   String lastnewip=String.valueOf(temp);
+   if(temp>0)
+	   lastnewip="+"+lastnewip;
+   
+   temp=(int)request.getAttribute("lastnewcure");
+   String lastnewcure=String.valueOf(temp);
+   if(temp>0)
+	   lastnewcure="+"+lastnewcure;
+   
+   temp=(int)request.getAttribute("lastnewdead");
+   String lastnewdead=String.valueOf(temp);
+   if(temp>0)
+	   lastnewdead="+"+lastnewdead;
+   
+   temp=(int)request.getAttribute("lastnewallip");
+   String lastnewallip=String.valueOf(temp);
+   if(temp>0)
+	   lastnewallip="+"+lastnewallip;
 %>
 
 <h1 id="q1" ><%=p.getName() %></h1>
@@ -30,22 +50,22 @@
 	    <div class="a1">
 			<p class="b1">现有确诊</p>
 			<p><%=p.getIp() %></p>
-			<p>昨日+00</p>
+			<p>昨日<%=lastnewip %></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计确诊</p>
-			<p>暂无</p>
-			<p>昨日+00</p>
+			<p><%=p.getAllIp() %></p>
+			<p>昨日<%=lastnewallip %></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计治愈</p>
 			<p><%=p.getCure() %></p>
-			<p>昨日+00</p>
+			<p>昨日<%=lastnewcure %></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计死亡</p>
 			<p><%=p.getDead() %></p>
-			<p>昨日+00</p>
+			<p>昨日<%=lastnewdead %></p>
 		</div>
     </div>
 	
@@ -70,7 +90,8 @@
 	var i=0;
 	var xdate=new Array();
 	
-	var nowIp=new Array();
+	var newIp=new Array();
+	var allIp=new Array();
 	var Cure=new Array();
 	var Dead=new Array();
 	
@@ -78,7 +99,8 @@
 	String[] months=(String[])request.getAttribute("months");
 	String[] days=(String[])request.getAttribute("days");
 	
-	int[] nowIp=(int[])request.getAttribute("nowIp");
+	int[] newIp=(int[])request.getAttribute("newIp");
+	int[] allIp=(int[])request.getAttribute("allIp");
 	int[] Cure=(int[])request.getAttribute("Cure");
 	int[] Dead=(int[])request.getAttribute("Dead");
 	
@@ -91,7 +113,8 @@
 	if(day<10)day='0'+day;
 	xdate[i]=month+"-"+day;
 	
-	nowIp[i]=<%=nowIp[i] %>;
+	newIp[i]=<%=newIp[i] %>;
+	allIp[i]=<%=allIp[i] %>;
 	Cure[i]=<%=Cure[i] %>;
 	Dead[i]=<%=Dead[i] %>;
 	
@@ -118,9 +141,9 @@
                 yAxis:{},
                 //系列列表。每个系列通过type决定自己的图表类型
                 series:[{
-	    	                 name:'数量',//series名称
+	    	                 name:'新增确诊',//series名称
 	    	                 type:'line',//series图表类型,line折线图 、scatter散点图
-	    	                 data:nowIp  //  
+	    	                 data:newIp  //  
 	    	                }]
             };
 		
@@ -148,9 +171,9 @@
 	                        yAxis:{},
 	                        //系列列表。每个系列通过type决定自己的图表类型
 	                        series:[{
-	                        	name:'数量',//series名称
+	                        	name:'新增确诊',//series名称
 	        	    	        type:'line',//series图表类型,line折线图 、scatter散点图
-	        	    	        data:nowIp  //  
+	        	    	        data:newIp  //  
 	        	    	                }]
 	                    };
 	            	
@@ -176,9 +199,9 @@
 	                        yAxis:{},
 	                        //系列列表。每个系列通过type决定自己的图表类型
 	                        series:[{
-	                        	name:'数量',//series名称
+	                        	name:'累计确诊',//series名称
 	        	    	        type:'line',//series图表类型,line折线图 、scatter散点图
-	        	    	        data:nowIp  //  
+	        	    	        data:allIp  //  
 	        	    	                }]
 	                    };
 	            	
@@ -204,11 +227,11 @@
 	                        yAxis:{},
 	                        //系列列表。每个系列通过type决定自己的图表类型
 	                        series:[{
-	                        	name:'数量',//series名称
+	                        	name:'治愈',//series名称
 	        	    	        type:'line',//series图表类型,line折线图 、scatter散点图
 	        	    	        data:Cure  //
 	        	    	        },{
-	        	    	        	name:'数量',//series名称
+	        	    	        	name:'死亡',//series名称
 	        	    	            type:'line',//series图表类型,line折线图 、scatter散点图
 	        	    	            data:Dead //
 	        	    	                }]

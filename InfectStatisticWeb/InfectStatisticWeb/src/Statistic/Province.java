@@ -3,6 +3,8 @@ package Statistic;
 public class Province {
 	private String name;//省份的名�?
 	private int ip;//感染患�??
+	private int allip;//累计确诊
+	private int heavyip;//重症患者
 	private int sp;//疑似患�??
 	private int cure;//治愈
 	private int dead;//死亡
@@ -12,6 +14,8 @@ public class Province {
 	{
 		this.name=name;
 		ip=0;
+		allip=0;
+		heavyip=0;
 		sp=0;
 		cure=0;
 		dead=0;
@@ -51,6 +55,16 @@ public class Province {
 	public int getDead()
 	{
 		return dead;
+	}
+	
+	public int getAllIp()
+	{
+		return allip=ip+cure+dead;
+	}
+	
+	public int getHeavyIp()
+	{
+		return heavyip;
 	}
 	
 	public void addIp(int x)//增加感染�?

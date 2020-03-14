@@ -28,6 +28,39 @@
      String year=s[0];
      String month=s[1];
      String day=s[2];
+     
+     String newip="+0",newcure="+0",
+    		 newdead="+0",newsp="+0",newallip="+0";
+     if(Datas.length>1)
+     {
+    	 Province temp=Datas[Datas.length-2].provinces.get(0);
+    	 int tempint;
+    	 tempint=pro.get(0).getIp()-temp.getIp();
+    	 newip=String.valueOf(tempint);
+    	 if(tempint>0)
+    		 newip="+"+String.valueOf(tempint);
+    	 
+    	 tempint=pro.get(0).getSp()-temp.getSp();
+    	 newsp=String.valueOf(tempint);
+    	 if(tempint>0)
+    		 newsp="+"+String.valueOf(tempint);
+    	 
+    	 tempint=pro.get(0).getCure()-temp.getCure();
+    	 newcure=String.valueOf(pro.get(0).getCure()-temp.getCure());
+    	 if(tempint>0)
+    		 newcure="+"+String.valueOf(tempint);
+    	 
+    	 tempint=pro.get(0).getDead()-temp.getDead();
+    	 newdead=String.valueOf(tempint);
+    	 if(tempint>0)
+    		 newdead="+"+String.valueOf(tempint);
+    	 
+    	 tempint=pro.get(0).getAllIp()-temp.getAllIp();
+    	 newallip=String.valueOf(tempint);
+    	 if(tempint>0)
+    		 newallip="+"+String.valueOf(tempint);
+     }
+        
 %>
 
 <p id="q1">数据更新至 <%=date %></p>
@@ -36,32 +69,32 @@
 		<div class="a1">
 			<p class="b1">现有确诊</p>
 			<p><%=Data.provinces.get(0).getIp() %></p>
-			<p>昨日<%=Data.provinces.get(0).getIp()-Datas[Datas.length-2].provinces.get(0).getIp() %></p>
+			<p>昨日<%=newip %></p>
 		</div>
 		<div class="a1">
 			<p class="b1">现有疑似</p>
 			<p><%=Data.provinces.get(0).getSp() %></p>
-			<p>昨日<%=Data.provinces.get(0).getSp()-Datas[Datas.length-2].provinces.get(0).getSp() %></p>
+			<p>昨日<%=newsp %></p>
 		</div>
 		<div class="a1">
 			<p class="b1">现有重症</p>
 			<p>暂无</p>
-			<p>昨日+00</p>
+			<p>昨日暂无</p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计确诊</p>
-			<p>暂无</p>
-			<p>昨日+00</p>
+			<p><%=Data.provinces.get(0).getAllIp() %></p>
+			<p>昨日<%=newallip %></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计治愈</p>
 			<p><%=Data.provinces.get(0).getCure() %></p>
-			<p>昨日<%=Data.provinces.get(0).getCure()-Datas[Datas.length-2].provinces.get(0).getCure() %></p>
+			<p>昨日<%=newcure %></p>
 		</div>
 		<div class="a1">
 			<p class="b1">累计死亡</p>
 			<p><%=Data.provinces.get(0).getDead() %></p>
-			<p>昨日<%=Data.provinces.get(0).getDead()-Datas[Datas.length-2].provinces.get(0).getDead() %></p>
+			<p>昨日<%=newdead %></p>
 		</div>
 	</div>
 	
@@ -115,15 +148,15 @@
 			            {name: '陕西',value: <%=pro.get(24).getIp() %> },
 			            {name: '上海',value: <%=pro.get(25).getIp() %> },
 			            {name: '四川',value: <%=pro.get(26).getIp() %> },
-			            {name: '天津',value: <%=pro.get(27).getIp() %> },  
+			            {name: '天津',value: <%=pro.get(27).getIp() %> },
 			            {name: '西藏',value: <%=pro.get(28).getIp() %> },
 			            {name: '新疆',value: <%=pro.get(29).getIp() %> },
 		                {name: '云南',value: <%=pro.get(30).getIp() %> },  
 		                {name: '浙江',value: <%=pro.get(31).getIp() %> },
 		                
-		                {name: '台湾',value: randomData() },  
-		                {name: '香港',value: randomData() },
-		                {name: '澳门',value: randomData() }  
+		                {name: '台湾',value: <%=pro.get(32).getIp() %> },
+		                {name: '香港',value: <%=pro.get(33).getIp() %> }, 
+		                {name: '澳门',value: <%=pro.get(34).getIp() %> }  
 		            ];
 		 
 		var arr = document.getElementsByTagName('button');
@@ -165,9 +198,9 @@
 		                {name: '云南',value: <%=pro.get(30).getIp() %> },  
 		                {name: '浙江',value: <%=pro.get(31).getIp() %> },
 		                
-		                {name: '台湾',value: randomData() },  
-		                {name: '香港',value: randomData() },
-		                {name: '澳门',value: randomData() }  
+		                {name: '台湾',value: <%=pro.get(32).getIp() %> },  
+		                {name: '香港',value: <%=pro.get(33).getIp() %> },
+		                {name: '澳门',value: <%=pro.get(34).getIp() %> }  
 		            ];
 	            	
 	            	draw(mydata);
@@ -175,41 +208,41 @@
 	            else if (this.id == 'all') 
 	            {
 	            	mydata = [  
-			            {name: '安徽',value: randomData() },
-			            {name: '北京',value: randomData() },
-			            {name: '重庆',value: randomData() },
-			            {name: '福建',value: randomData() },
-			            {name: '甘肃',value: randomData() },
-			            {name: '广东',value: randomData() },
-			            {name: '广西',value: randomData() },
-			            {name: '贵州',value: randomData() },
-			            {name: '海南',value: randomData() },
-			            {name: '河北',value: randomData() },
-			            {name: '河南',value: randomData() },
-			            {name: '黑龙江',value: randomData() },
-			            {name: '湖北',value: randomData() },
-			            {name: '湖南',value: randomData() }, 
-			            {name: '吉林',value: randomData() },
-			            {name: '江苏',value: randomData() },
-			            {name: '江西',value: <%=pro.get(17).getIp() %> },
-			            {name: '辽宁',value: <%=pro.get(18).getIp() %> },
-			            {name: '内蒙古',value: <%=pro.get(19).getIp() %> },
-			            {name: '宁夏',value: <%=pro.get(20).getIp() %> },
-			            {name: '青海',value: <%=pro.get(21).getIp() %> },
-			            {name: '山东',value: <%=pro.get(22).getIp() %> },
-			            {name: '山西',value: <%=pro.get(23).getIp() %> },
-			            {name: '陕西',value: <%=pro.get(24).getIp() %> },
-			            {name: '上海',value: <%=pro.get(25).getIp() %> },
-			            {name: '四川',value: <%=pro.get(26).getIp() %> },
-			            {name: '天津',value: <%=pro.get(27).getIp() %> },  
-			            {name: '西藏',value: <%=pro.get(28).getIp() %> },
-			            {name: '新疆',value: <%=pro.get(29).getIp() %> },
-		                {name: '云南',value: <%=pro.get(30).getIp() %> },  
-		                {name: '浙江',value: <%=pro.get(31).getIp() %> },
+			            {name: '安徽',value: <%=pro.get(1).getAllIp() %> },
+			            {name: '北京',value: <%=pro.get(2).getAllIp() %> },
+			            {name: '重庆',value: <%=pro.get(3).getAllIp() %> },
+			            {name: '福建',value: <%=pro.get(4).getAllIp() %> },
+			            {name: '甘肃',value: <%=pro.get(5).getAllIp() %> },
+			            {name: '广东',value: <%=pro.get(6).getAllIp() %> },
+			            {name: '广西',value: <%=pro.get(7).getAllIp() %> },
+			            {name: '贵州',value: <%=pro.get(8).getAllIp() %> },
+			            {name: '海南',value: <%=pro.get(9).getAllIp() %> },
+			            {name: '河北',value: <%=pro.get(10).getAllIp() %> },
+			            {name: '河南',value: <%=pro.get(11).getAllIp() %> },
+			            {name: '黑龙江',value: <%=pro.get(12).getAllIp() %> },
+			            {name: '湖北',value: <%=pro.get(13).getAllIp() %> },
+			            {name: '湖南',value: <%=pro.get(14).getAllIp() %> }, 
+			            {name: '吉林',value: <%=pro.get(15).getAllIp() %> },
+			            {name: '江苏',value: <%=pro.get(16).getAllIp() %> },
+			            {name: '江西',value: <%=pro.get(17).getAllIp() %> },
+			            {name: '辽宁',value: <%=pro.get(18).getAllIp() %> },
+			            {name: '内蒙古',value: <%=pro.get(19).getAllIp() %> },
+			            {name: '宁夏',value: <%=pro.get(20).getAllIp() %> },
+			            {name: '青海',value: <%=pro.get(21).getAllIp() %> },
+			            {name: '山东',value: <%=pro.get(22).getAllIp() %> },
+			            {name: '山西',value: <%=pro.get(23).getAllIp() %> },
+			            {name: '陕西',value: <%=pro.get(24).getAllIp() %> },
+			            {name: '上海',value: <%=pro.get(25).getAllIp() %> },
+			            {name: '四川',value: <%=pro.get(26).getAllIp() %> },
+			            {name: '天津',value: <%=pro.get(27).getAllIp() %> },  
+			            {name: '西藏',value: <%=pro.get(28).getAllIp() %> },
+			            {name: '新疆',value: <%=pro.get(29).getAllIp() %> },
+		                {name: '云南',value: <%=pro.get(30).getAllIp() %> },  
+		                {name: '浙江',value: <%=pro.get(31).getAllIp() %> },
 		                
-		                {name: '台湾',value: randomData() },  
-		                {name: '香港',value: randomData() },
-		                {name: '澳门',value: randomData() }  
+		                {name: '台湾',value: <%=pro.get(32).getAllIp() %> },  
+		                {name: '香港',value: <%=pro.get(33).getAllIp() %> },
+		                {name: '澳门',value: <%=pro.get(34).getAllIp() %> }  
 		            ];
 	                
 	            	draw(mydata);
