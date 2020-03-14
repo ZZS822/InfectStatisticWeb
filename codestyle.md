@@ -1,5 +1,7 @@
 本次代码规范采用阿里巴巴的Java代码规范。
+
 来源：https://github.com/chjw8016/alibaba-java-style-guide/blob/master/c1/README.md
+
 以下仅展示命名规约，常量定义和格式规约，详情请访问来源网址
 
 (一) 命名规约
