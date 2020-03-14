@@ -18,13 +18,9 @@
 
 <%
      
-     //String web_inf = getServletContext().getRealPath("/WEB-INF/");
-     //String path="E:\\MyJavaCode\\InfectStatisticWeb\\WebContent\\log"; 
      String path = this.getServletContext().getRealPath("/log");
 
      InfectStatistic is=new InfectStatistic();
-
-     
 
      is.getFileList(path);
      
@@ -337,5 +333,31 @@
 	 
 	</script>
 
+    <div style="width:100%;height:50px"></div>
+
+    <table style="width:80%;margin-left:10%;text-align: center;" >
+    <tr>
+    <th>地区</th>
+    <th>现有确诊</th>
+    <th>累计确诊</th>
+    <th>疑似患者</th>
+    <th>治愈</th>
+    <th>死亡</th>
+    </tr>
+    <%
+    for(int i=0;i<35;i++)
+    {
+    %>
+    <tr>
+    <td><%=Data.provinces.get(i).getName() %></td>
+    <td><%=Data.provinces.get(i).getIp() %></td>
+    <td><%=Data.provinces.get(i).getAllIp() %></td>
+    <td><%=Data.provinces.get(i).getSp() %></td>
+    <td><%=Data.provinces.get(i).getCure() %></td>
+    <td><%=Data.provinces.get(i).getDead() %></td>
+    </tr>
+    <%} %>
+    </table>
+    
 </body>
 </html>
